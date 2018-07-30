@@ -48,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndpointAsyncTask().execute(new Pair<Context, String>(this, "apiTest"));
+        if(BuildConfig.FLAVOR.equals("free")){
+            Toast.makeText(this, "Upgrade to paid version.", Toast.LENGTH_SHORT).show();
+        } else {
+            new EndpointAsyncTask().execute(new Pair<Context, String>(this, "apiTest"));
+        }
     }
 
 
